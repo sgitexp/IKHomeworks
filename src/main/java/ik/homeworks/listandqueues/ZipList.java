@@ -24,7 +24,6 @@ public class ZipList {
 
         LinkedListNode head = node;
 
-
         if (node == null) {
 
             node = new LinkedListNode(value);
