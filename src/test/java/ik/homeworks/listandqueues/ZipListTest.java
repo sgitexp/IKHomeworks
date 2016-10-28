@@ -1,6 +1,7 @@
 package ik.homeworks.listandqueues;
 
 import ik.homeworks.datastructures.HLinkedListNode;
+import ik.homeworks.datastructures.LinkedListNode;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,12 +13,12 @@ public class ZipListTest {
     @Test
     public void testZip() throws Exception {
 
-        HLinkedListNode n1 = new HLinkedListNode(1);
-        HLinkedListNode n2 = new HLinkedListNode(2);
-        HLinkedListNode n3 = new HLinkedListNode(3);
-        HLinkedListNode n4 = new HLinkedListNode(4);
-        HLinkedListNode n5 = new HLinkedListNode(5);
-        HLinkedListNode n6 = new HLinkedListNode(6);
+        LinkedListNode n1 = new LinkedListNode(1);
+        LinkedListNode n2 = new LinkedListNode(2);
+        LinkedListNode n3 = new LinkedListNode(3);
+        LinkedListNode n4 = new LinkedListNode(4);
+        LinkedListNode n5 = new LinkedListNode(5);
+        LinkedListNode n6 = new LinkedListNode(6);
 
         n1.next = n2;
         n2.next = n3;

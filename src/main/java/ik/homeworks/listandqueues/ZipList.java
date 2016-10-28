@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import ik.homeworks.datastructures.HLinkedListNode;
+import ik.homeworks.datastructures.LinkedListNode;
 
 /**
  * @author chattops
@@ -15,17 +15,18 @@ public class ZipList {
 
     /**
      * Adds an element to tail
+     *
      * @param node
      * @param value
      * @return
      */
-    private static HLinkedListNode addToTail(HLinkedListNode node, int value) {
+    private static LinkedListNode addToTail(LinkedListNode node, int value) {
 
-        HLinkedListNode head = node;
+        LinkedListNode head = node;
 
         if (node == null) {
 
-            node = new HLinkedListNode(value);
+            node = new LinkedListNode(value);
             head = node;
 
         } else {
@@ -33,7 +34,7 @@ public class ZipList {
             while (node.next != null)
                 node = node.next;
 
-            HLinkedListNode tmp = new HLinkedListNode(value);
+            LinkedListNode tmp = new LinkedListNode(value);
             node.next = tmp;
         }
 
@@ -42,9 +43,10 @@ public class ZipList {
 
     /**
      * Prints an linked List
+     *
      * @param n
      */
-    public static String getPrintString(HLinkedListNode n) {
+    public static String getPrintString(LinkedListNode n) {
 
         StringBuffer buffer = new StringBuffer();
 
@@ -53,7 +55,7 @@ public class ZipList {
         }
 
         while (n != null) {
-            buffer.append(n.val).append(",");
+            buffer.append(n.data).append(",");
             n = n.next;
         }
 
@@ -62,17 +64,18 @@ public class ZipList {
 
     /**
      * zip a linked list
+     *
      * @param pList
      * @return
      */
-    public static void zip(HLinkedListNode pList) {
+    public static void zip(LinkedListNode pList) {
 
-        HLinkedListNode p1 = pList;
-        HLinkedListNode p2 = null;
+        LinkedListNode p1 = pList;
+        LinkedListNode p2 = null;
 
         //Split a list in two parts
-        HLinkedListNode sp = pList;
-        HLinkedListNode fp = pList.next;
+        LinkedListNode sp = pList;
+        LinkedListNode fp = pList.next;
 
         while (fp != null && fp.next != null) {
             sp = sp.next;
@@ -97,18 +100,18 @@ public class ZipList {
      * @param head
      * @return
      */
-    private static HLinkedListNode reverseLinkedList(HLinkedListNode head) {
+    private static LinkedListNode reverseLinkedList(LinkedListNode head) {
 
         if (head == null || head.next == null) {
             return head;
         }
 
-        HLinkedListNode p1 = head;
-        HLinkedListNode p2 = p1.next;
+        LinkedListNode p1 = head;
+        LinkedListNode p2 = p1.next;
 
         head.next = null;
         while (p1 != null && p2 != null) {
-            HLinkedListNode t = p2.next;
+            LinkedListNode t = p2.next;
             p2.next = p1;
             p1 = p2;
             p2 = t;
@@ -117,46 +120,30 @@ public class ZipList {
         return p1;
     }
 
-    /**
-     * Merge two lists
-     *
-     * @param l1
-     * @param l2
-     * @return
-     */
-    private static void mergeList(HLinkedListNode l1, HLinkedListNode l2) {
 
-        HLinkedListNode head = l1;
+    private static LinkedListNode mergeList(LinkedListNode l1, LinkedListNode l2) {
 
-        HLinkedListNode tl1next = null;
-        HLinkedListNode tl2next = null;
+        LinkedListNode head = new LinkedListNode(-1);
+        LinkedListNode p = head;
 
-        while (l1 != null && l2 != null) {
+        LinkedListNode p1 = l1;
+        LinkedListNode p2 = l2;
 
-            tl1next = l1.next;
-            tl2next = l2.next;
-            l2.next = l1.next;
-            l1.next = l2;
-            l1 = tl1next;
-            l2 = tl2next;
+        while (p1 != null && p2 != null) {
 
+            p.next = p1;
+            p1 = p1.next;
+            p = p.next;
+
+            p.next = p2;
+            p2 = p2.next;
+            p = p.next;
         }
 
-        if (l1 != null) {
-            while (l1 != null) {
-                head = addToTail(head, l1.val);
-                l1 = l1.next;
-            }
-        }
+        if (p1 != null) p.next = p1;
+        if (p2 != null) p.next = p2;
 
-        if (l2 != null) {
-            while (l2 != null) {
-                head = addToTail(head, l2.val);
-                l2 = l2.next;
-            }
-        }
-
-
+        return head.next;
     }
 
 

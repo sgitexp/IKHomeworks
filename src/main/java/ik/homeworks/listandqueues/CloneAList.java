@@ -68,36 +68,20 @@ public class CloneAList {
         return clone;
     }
 
-    public static void print( SNode SNode) {
-
-        SNode tmp = SNode;
-        while( tmp != null) {
-            System.out.print("[" + tmp.data + "]");
-            tmp =tmp.next;
-        }
-        System.out.println("");
-        tmp = SNode;
-        while( tmp != null) {
-            if(tmp.arbitPointer != null)
-                System.out.print("[" + tmp.arbitPointer.data + "]");
-            tmp = tmp.next;
-        }
-        System.out.println("======================================");
-    }
 
     public static String getPrintString( SNode SNode) {
 
         StringBuffer buffer = new StringBuffer("");
         SNode tmp = SNode;
         while( tmp != null) {
-            buffer.append("[" + tmp.data + "]");
+            buffer.append(tmp.data).append(",");
             tmp =tmp.next;
         }
         buffer.append("-");
         tmp = SNode;
         while( tmp != null) {
             if(tmp.arbitPointer != null)
-                buffer.append("[" + tmp.arbitPointer.data + "]");
+                buffer.append(tmp.arbitPointer.data).append(",");
             tmp = tmp.next;
         }
         return buffer.toString();
