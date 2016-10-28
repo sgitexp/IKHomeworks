@@ -1,6 +1,6 @@
 package ik.homeworks.listandqueues;
 
-import ikhomework.datastructures.SNode;
+import ik.homeworks.datastructures.SNode;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,7 +1,7 @@
 package ik.homeworks.listandqueues;
 
 
-import ikhomework.datastructures.SNode;
+import ik.homeworks.datastructures.SNode;
 
 /**
  *

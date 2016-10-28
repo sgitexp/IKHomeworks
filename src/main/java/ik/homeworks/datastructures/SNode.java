@@ -1,4 +1,4 @@
-package ikhomework.datastructures;
+package ik.homeworks.datastructures;
 
 /**
  * Created by sukanta on 10/27/16.
