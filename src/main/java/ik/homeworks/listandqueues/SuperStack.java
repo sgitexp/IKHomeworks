@@ -34,7 +34,7 @@ public class SuperStack {
 
     public int pop() {
 
-        int e = (top >= 0) ? this.array[top--] : null;
+        int e = (top >= 0) ? this.array[top--] : -999;
         printTop();
         return e;
 
