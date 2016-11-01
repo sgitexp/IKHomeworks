@@ -13,9 +13,9 @@ public class MergeSortTest {
     @Test
     public void sort() throws Exception {
 
-        Integer[] a = {1, -5, 6, 8, 9, 24, 7, 5, 89};
-        MergeSort.sort(a);
-        System.out.println(Arrays.toString(a));
+        int[] a = {1, -5, 6, 8, 9, 24, 7, 5, 89};
+         int[] b = MergeSort.sort(a);
+        System.out.println(Arrays.toString(b));
     }
 
 }
