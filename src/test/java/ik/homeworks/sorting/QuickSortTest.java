@@ -14,11 +14,12 @@ import static org.junit.Assert.*;
  * @author sukanta
  */
 public class QuickSortTest {
-    
-   @Test
+
+
+    @Test
     public void sort() throws Exception {
 
-        int[] a = {1, -5, 6, 8, 9, 24, 7, 5, 89};
+        Integer[] a = {1, -5, 6, 8, 9, 24, 7, 5, 89};
         QuickSort.sort(a);
         System.out.println(Arrays.toString(a));
     }

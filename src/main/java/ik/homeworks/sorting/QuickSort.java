@@ -6,50 +6,63 @@
 package ik.homeworks.sorting;
 
 /**
- *
  * @author sukanta
  */
 public class QuickSort {
-    
-     public static void sort(int[] a) {
+
+
+    public static <T extends Comparable> void sort(T[] a) {
         sort(a, 0, a.length - 1);
     }
 
-    private static void sort(int a[], int low, int high) {
+    private static <T extends Comparable> void sort(T[] a, int start, int end) {
 
-        if (high <= low) return;
-        int partitionIndex = partition(a, low, high);
-        sort(a, low, partitionIndex - 1);
-        sort(a, partitionIndex + 1, high);
+        if (end <= start)
+            return;
 
+        int partition = partition(a, start, end);
+        sort(a, start, partition - 1);
+        sort(a, partition + 1, end);
     }
 
-    private static int partition(int a[], int low, int high) {
+    private static <T extends Comparable> int partition(T[] a, int start, int end) {
 
-        int pIndex = low;
+        T pivot = a[start];
+        int pIndex = start;
 
         while (true) {
 
-            while (low <= high && a[low] <= a[pIndex])
-                low++;
+            while (start <= end && lessThanEquals(a[start], pivot)) {
+                start++;
+            }
 
-            while (low <= high && a[high] > a[pIndex])
-                high--;
+            while (start <= end && greaterThan(a[end], pivot)) {
+                end--;
+            }
 
-            if (low >= high)
+            if (start >= end)
                 break;
 
-            swap(a, low, high);
+            swap(a, start, end);
         }
 
-        swap(a, high, pIndex);
-        pIndex = high;
-        return pIndex;
-
+        swap(a, pIndex, end);
+        return end;
     }
-    
-    private static void swap(int[] a, int from, int to) {
-        int temp = a[from];
+
+    private static <T extends Comparable> boolean lessThanEquals(T a, T b) {
+        int s = a.compareTo(b);
+        return s <= 0;
+    }
+
+
+    private static <T extends Comparable> boolean greaterThan(T a, T b) {
+        int s = a.compareTo(b);
+        return s > 0;
+    }
+
+    private static <T extends Comparable> void swap(T[] a, int from, int to) {
+        T temp = a[from];
         a[from] = a[to];
         a[to] = temp;
     }
